@@ -1,0 +1,129 @@
+<div class="card-body">
+    <h5 class="card-title">
+        Produtos
+    </h5>
+    <br>
+    <div class="row ml-1 d-flex bd-highlight">
+        <button class="btn btn-sm btn-primary mr-auto mb-3" (click)="atribuirParaSalvar()">Cadastrar Produto</button>
+        <!-- <div class="col-md-auto mb-3">
+            <div class="input-group input-group-sm">
+                <div class="input-group-prepend">
+                    <i class="input-group-text fas fa-search "></i>
+                </div>
+                <input type="text" (keyup)="filtrarTable()" #inputFilterTable class="form-control"
+                    id="inlineFormInputGroup">
+            </div>
+        </div> -->
+    </div>
+
+    <!-- <ag-grid-angular #agGrid style="height: 700px;" class="ag-theme-balham" (gridReady)="InicializarDataTable($event)"
+        [rowData]="arrayUsuario" (cellValueChanged)="OnCellValueChanged($event)" [columnDefs]="colunasTabelaUsuario"
+        [pagination]="true" [context]="context" [defaultColDef]="definicaoPadraoColunas" [localeText]="traducaoDataGrid"
+        [frameworkComponents]="frameworkComponents" [animateRows]="true" [enableColResize]="true" [getRowHeight]="50"
+        [enableFilter]="true" [floatingFilter]="true" [enableSorting]="true" [components]="components"
+        [singleClickEdit]="true">
+    </ag-grid-angular> -->
+
+    <table class="table table-sm table-pagination">
+        <thead class="thead-light thead-table-pagination">
+            <tr>
+                <th>Nome</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody *ngIf="!carregando && resources != undefined" class="tbody-table-pagination">
+            <tr *ngFor="let usuario of resources">
+                <td>{{usuario.nome}}</td>
+                <td>{{usuario.valor}}</td>
+                <td>
+                    <a class="mr-2" (click)="atribuirParaEditar(usuario)">
+                        <i class="btn-table btn-editar fa fa-pencil-alt fa-sm" aria-hidden="true"></i>
+                    </a>
+                    <a class="mr-2" (click)="excluir(usuario)">
+                        <i class="btn-table btn-visualizar fa fa-unlock-alt fa-sm" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="!carregando && resources == undefined" class="tbody-table-pagination">
+            <tr>
+                <td colspan="2">Nenhum registro encontrado</td>
+            </tr>
+        </tbody>
+        <tbody *ngIf="carregando" class="tbody-table-pagination">
+            <tr>
+                <td class="text-center mt-2 mb-2" colspan="2">
+                    <div class="spinner-border spinner-border-sm mr-1" style="color: #2a75ac;">
+                    </div>
+                    <span>Carregando...</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div bsModal #modalCadastroEdicao="bs-modal" class="modal fade" tabindex="-1" role="dialog"
+        aria-labelledby="dialog-child-name">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 id="dialog-sizes-name1" class="modal-title pull-left">{{tituloModal}}
+                    </h5>
+
+                    <button type="button" class="close pull-right" (click)="fecharModal(modalCadastroEdicao)"
+                        aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" [formGroup]="formulario">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div [formGroup]="formulario">
+                                <img *ngIf="!formulario.value.imagem" src="../../../../../assets/images/sem-foto.jpg"
+                                    class="imagemBanner rounded mx-auto d-block">
+                                <img *ngIf="formulario.value.imagem" src="{{formulario.value.imagem}}"
+                                    class="imagemBanner rounded mx-auto d-block">
+                            </div>
+                            <div class="modal-footer-cust">
+                                <button class="btn btn-sm btn-danger" (click)="removerImagem()"
+                                    *ngIf="formulario.value.imagem"><i class="fa fa-times"></i>
+                                    Remover</button>
+                                <button class="btn btn-sm btn-primary adicionar-foto" (click)="carregarImagem()"
+                                    *ngIf="!formulario.value.imagem"><i class="fa fa-picture-o"></i>
+                                    Adicionar</button>
+                                <button class="btn btn-sm btn-primary pull-right" (click)="carregarImagem()"
+                                    *ngIf="formulario.value.imagem"><i class="fa fa-refresh"></i>
+                                    Trocar</button>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="col-md-12 mb-3">
+                                <label for="inlineFormInputGroup">Nome</label>
+                                <div class="input-group input-group-sm mb-2">
+                                    <div class="input-group-prepend">
+                                        <i class="input-group-text fa fa-unlock-alt"></i>
+                                    </div>
+                                    <input formControlName="nome" type="text" class="form-control"
+                                        id="inlineFormInputGroup">
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 mb-3">
+                                <label for="inlineFormInputGroup">Valos</label>
+                                <div class="input-group input-group-sm mb-2">
+                                    <div class="input-group-prepend">
+                                        <i class="input-group-text fa fa-unlock-alt"></i>
+                                    </div>
+                                    <input formControlName="valor" type="text" class="form-control"
+                                        id="inlineFormInputGroup">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" (click)="salvar()">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

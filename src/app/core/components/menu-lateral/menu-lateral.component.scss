@@ -80,7 +80,7 @@ body {
 }
 
 .sidebar-submenu {
-    font-size: 0.9rem;
+    font-size: 2.9rem;
 }
 
 #sidebar-container .list-group-item:hover {
@@ -161,6 +161,7 @@ body {
 .active {
     background-color: #3086c5 !important;
     border: 1px solid #3086c5 !important;
+    border-radius: 0px !important;
     color: white !important;
     width: 107%;
 }
@@ -180,6 +181,7 @@ body {
 
 .cardRotas {
     box-shadow: 4px 4px 16px 0px rgba(50, 50, 50, 0.41);
+    min-height: 80%;
 }
 
 .logoHD {
@@ -210,7 +212,7 @@ body {
     font-weight: bold;
     position: absolute;
     right: 0;
-    line-height: 1.2em;
+    line-height: 1em;
     font-size: 18px;
     transform: rotate(0deg);
     transition: all ease .4s;
@@ -232,7 +234,7 @@ body {
     font-family: fontawesome;
     color: #eabf13;
     font-weight: bold;
-    line-height: 1.2em;
+    line-height: 1em;
     position: absolute;
     transform: rotateZ(-90deg);
     right: 0;
@@ -255,6 +257,17 @@ body {
     width: 100%;
     background-color: #3086c5 !important;
     border-radius: 0 !important;
+}
+
+.lightBlue{
+    background-color: #81bce6 !important;
+    border: none !important;
+    border-radius: 0 !important;
+    color:#fff !important;
+    font-weight: 500 !important;
+    
+    width: 107%;
+  
 }
 
 .card-block-collapse ul.list-unstyled li a.list-group-item {
@@ -555,6 +568,48 @@ body {
   .colapsesAdmCss{
     color: #fff;
   }
+  /* @media (max-width: 768px) {
+    .divLogoHD {
+      display: none;
+    }
+    #sidebar.active>.divLogoHD {
+      display: block;
+    }
+  }
+  
+  .divLogoHD {
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    min-width: 250px;
+    max-width: 250px;
+    display: block;
+    text-align: center;
+    transition: all 0.3s;
+  }
+  
+  .divLogoHD a>img {
+    text-align: center;
+    width: 60px;
+    height: 40px;
+    opacity: .5;
+  }
+  
+  #sidebar.active>.divLogoHD {
+    position: fixed !important;
+    min-width: 80px !important;
+    max-width: 80px !important;
+    transition: all 0.3s;
+  } */
+  
+  /* Fim accordion */
+  
+  /* .card-block-collapse ul.list-unstyled li {
+    border-top: 1px solid #f9f9f9;
+  }
+  .card-block-collapse ul.list-unstyled li:last-child {
+    border-bottom: 1px solid #f9f9f9;
+  } */
   
   .valorProdutoModal {
     font-family: 'Finger Paint', cursive;

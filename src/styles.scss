@@ -1,1 +1,169 @@
-/* You can add global styles to this file, and also import other style files */
+label{
+  font-size: 12px;
+}
+
+.alertaToastNotificacaoTop {
+  margin-top: 55px;
+  box-shadow: none !important;
+}
+
+.popup-swall-custom-error {
+  color: white !important;
+  box-shadow: none !important;
+  background-color: rgba(255, 0, 0, 0.705) !important;
+}
+
+.icon-swall-custom-error {
+  border: none !important;
+}
+
+.title-swall-white-error {
+  color: #fff !important;
+  font-size: 14px !important;
+}
+
+.title-swall-white-success {
+  color: #fff !important;
+  font-size: 14px !important;
+}
+
+.popup-swall-custom-success {
+  box-shadow: none !important;
+  background-color: rgba(88, 167, 88, 1) !important;
+}
+
+.ag-theme-balham .relatorioPendente {
+  background-color: #f8d563 !important;
+}
+
+.ag-theme-balham .relatorioSalvo {
+  background-color: rgb(140, 228, 128) !important;
+}
+.ag-theme-balham .relatorioGlosado {
+  background-color: rgb(231, 124, 110) !important;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: #4c7fa3 !important;
+  color: #fff !important;
+}
+
+.select2-container--default .select2-selection--single {
+  padding: 6px !important;
+  height: 40px !important;
+  border-color: #ced4da !important;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow {
+  height: 40px !important;
+}
+
+ul.nav-tabs {
+  font-size: 14px !important;
+}
+
+.iconPointer {
+  color: #ffc400 !important;
+  cursor: pointer;
+}
+.iconPointerBlue {
+  color: #050e8d !important;
+  cursor: pointer;
+}
+
+.iconPointerSuccess {
+  color: #28a745 !important;
+  cursor: pointer;
+}
+
+.iconPointerDanger {
+  color: #dc3545 !important;
+  cursor: pointer;
+}
+
+.ag-theme-balham .aguardando-atendimento-em-atraso {
+  background-color: #ff6961 !important;
+}
+
+.ag-theme-balham .em-atendimento {
+  background-color: orange !important;
+}
+
+.ag-theme-balham .deixar-amarelo {
+  background-color: lightyellow !important;
+}
+
+.ag-theme-balham .deixar-verde {
+  background-color: lightgreen !important;
+}
+
+.ag-theme-balham .deixar-azul {
+  background-color: lightblue !important;
+}
+
+/* table-pagination */
+
+.btn-table {
+  cursor: pointer;
+  font-size: 14px !important;
+}
+
+.btn-editar {
+  color: rgb(32, 44, 68);
+  cursor: pointer;
+}
+
+.btn-visualizar {
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+}
+
+.btn-excluir {
+  color: red;
+  cursor: pointer;
+}
+
+.table-pagination {
+  border: solid 1px #dee2e6;
+}
+
+.thead-table-pagination {
+  color: rgba(43, 43, 43, 0.54);
+  font-size: 12px;
+}
+
+.tbody-table-pagination {
+  font-size: 12px;
+}
+
+.nav-pagnation {
+  font-size: 12px;
+}
+
+.btn-pagination {
+  color: rgb(62, 133, 240);
+  background-color: rgb(247, 247, 247);
+  padding: 0 7px 0 7px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-pagination:hover {
+  background-color: rgb(223, 223, 223);
+  padding: 0 7px 0 7px;
+  border-radius: 5px;
+}
+
+.pagina-atual {
+  padding: 0 4px 0 5px;
+  margin: 0 2px 0 0;
+  background-color: rgb(199, 199, 199);
+  border-radius: 5px;
+  color: rgb(66, 66, 66);
+  font-weight: bold;
+}
+
+.total-itens {
+  font-size: 13px;
+  padding-top: 0px !important;
+}

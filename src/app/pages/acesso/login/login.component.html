@@ -1,0 +1,36 @@
+<div class="fundo">
+    <div class="h-100">
+        <div class="d-flex justify-content-center h-100">
+            <div class="user_card">
+                <div class="d-flex justify-content-center">
+                    <div class="brand_logo_container">
+                        <img src="../../../../assets/images/teste.png" class="brand_logo" alt="Logo">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center form_container">
+                    <form id="login" [formGroup]="formulario" (submit)="fazerLogin()">
+                        <div class="input-group mb-3">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input type="email" formControlName="username" id="inputEmail" class="form-control input_user"
+                                placeholder="Usuario">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-append">
+                                <span class="input-group-text"><i class="fa fa-unlock"></i></span>
+                            </div>
+                            <input type="password" formControlName="password" id="inputPassword"
+                                class="form-control input_pass" placeholder="Senha">
+                        </div>
+                        <div class="d-flex justify-content-center mt-3 login_container">
+                            <button type="submit" [disabled]="!formulario.valid" class="btn login_btn">
+                                <i class="fa fa-sign-in" aria-hidden="true"></i>
+                                Entrar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
