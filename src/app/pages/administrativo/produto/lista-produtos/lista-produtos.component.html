@@ -5,54 +5,38 @@
     <br>
     <div class="row ml-1 d-flex bd-highlight">
         <button class="btn btn-sm btn-primary mr-auto mb-3" (click)="atribuirParaSalvar()">Cadastrar Produto</button>
-        <!-- <div class="col-md-auto mb-3">
-            <div class="input-group input-group-sm">
-                <div class="input-group-prepend">
-                    <i class="input-group-text fas fa-search "></i>
-                </div>
-                <input type="text" (keyup)="filtrarTable()" #inputFilterTable class="form-control"
-                    id="inlineFormInputGroup">
-            </div>
-        </div> -->
     </div>
-
-    <!-- <ag-grid-angular #agGrid style="height: 700px;" class="ag-theme-balham" (gridReady)="InicializarDataTable($event)"
-        [rowData]="arrayUsuario" (cellValueChanged)="OnCellValueChanged($event)" [columnDefs]="colunasTabelaUsuario"
-        [pagination]="true" [context]="context" [defaultColDef]="definicaoPadraoColunas" [localeText]="traducaoDataGrid"
-        [frameworkComponents]="frameworkComponents" [animateRows]="true" [enableColResize]="true" [getRowHeight]="50"
-        [enableFilter]="true" [floatingFilter]="true" [enableSorting]="true" [components]="components"
-        [singleClickEdit]="true">
-    </ag-grid-angular> -->
 
     <table class="table table-sm table-pagination">
         <thead class="thead-light thead-table-pagination">
             <tr>
-                <th>Nome</th>
-                <th>Valor</th>
+                <th style="width: 700px;">Nome</th>
+                <th style="width: 100px;">Valor</th>
+                <th style="width: 50px;">Ações</th>
             </tr>
         </thead>
         <tbody *ngIf="!carregando && resources != undefined" class="tbody-table-pagination">
-            <tr *ngFor="let usuario of resources">
-                <td>{{usuario.nome}}</td>
-                <td>{{usuario.valor}}</td>
+            <tr *ngFor="let produto of resources">
+                <td>{{produto.nome}}</td>
+                <td>{{produto.valor | currency: 'BRL'}}</td>
                 <td>
-                    <a class="mr-2" (click)="atribuirParaEditar(usuario)">
+                    <a class="mr-2" (click)="atribuirParaEditar(produto)">
                         <i class="btn-table btn-editar fa fa-pencil-alt fa-sm" aria-hidden="true"></i>
                     </a>
-                    <a class="mr-2" (click)="excluir(usuario)">
-                        <i class="btn-table btn-visualizar fa fa-unlock-alt fa-sm" aria-hidden="true"></i>
+                    <a class="mr-2" (click)="excluirProduto(produto)">
+                        <i class="btn-table btn-visualizar fa fa-trash fa-sm" aria-hidden="true"></i>
                     </a>
                 </td>
             </tr>
         </tbody>
         <tbody *ngIf="!carregando && resources == undefined" class="tbody-table-pagination">
             <tr>
-                <td colspan="2">Nenhum registro encontrado</td>
+                <td colspan="3">Nenhum registro encontrado</td>
             </tr>
         </tbody>
         <tbody *ngIf="carregando" class="tbody-table-pagination">
             <tr>
-                <td class="text-center mt-2 mb-2" colspan="2">
+                <td class="text-center mt-2 mb-2" colspan="3">
                     <div class="spinner-border spinner-border-sm mr-1" style="color: #2a75ac;">
                     </div>
                     <span>Carregando...</span>
@@ -104,6 +88,12 @@
                                     </div>
                                     <input formControlName="nome" type="text" class="form-control"
                                         id="inlineFormInputGroup">
+                                    <!-- <div class="text-danger"
+                                        *ngIf="formulario.get('nome').invalid && formulario.get('nome').touched">
+                                        <div *ngIf="formulario.get('nome').errors.required">
+                                            Campo obrigatório
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
 
@@ -113,15 +103,26 @@
                                     <div class="input-group-prepend">
                                         <i class="input-group-text fa fa-unlock-alt"></i>
                                     </div>
-                                    <input formControlName="valor" type="text" class="form-control"
+                                    <input formControlName="valor" type="number" class="form-control"
                                         id="inlineFormInputGroup">
+                                    <!-- <div class="text-danger"
+                                        *ngIf="formulario.get('valor').invalid && formulario.get('valor').touched">
+                                        <div *ngIf="formulario.get('valor').errors.required">
+                                            Campo obrigatório
+                                        </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-primary" (click)="salvar()">Salvar</button>
+                    <button [disabled]="formulario.invalid || this.carregando" class="btn btn-sm btn-primary"
+                        type="submit" (click)="submitFormulario()">
+                        <span *ngIf="this.carregando" class="spinner-grow spinner-grow-sm" role="status"></span>
+                        <span *ngIf="this.carregando" class="load-text"> Carregando...</span>
+                        <span *ngIf="!this.carregando" class="btn-text">{{textoBotaoModal}}</span>
+                    </button>
                 </div>
             </div>
         </div>

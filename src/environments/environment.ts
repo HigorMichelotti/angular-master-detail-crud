@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  BASE_URL: `http://localhost:5000/`,
+  BASE_URL: `http://localhost:5000/api/`,
   BASE_AUTHENTICATION_URL: "https://dev.sitemercado.com.br/api/",
   CAMINHO_IMAGEM: 'http://localhost/arquivos/',
 };

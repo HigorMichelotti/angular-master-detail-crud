@@ -4,7 +4,7 @@ import { ModelBase } from "src/app/shared/models/model-base";
 export class Produto extends ModelBase {
     constructor(
         public nome?: string,
-        public valor?: string,
+        public valor?: number,
         public imagem?: string
     ) {
         super();
