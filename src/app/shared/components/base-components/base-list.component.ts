@@ -48,14 +48,10 @@ export abstract class BaseListComponent<T extends ModelBase> implements OnInit {
     this.formBuilder = this.injector.get(FormBuilder);
 
     this.baseComponentPath = this.route.snapshot.parent.url[0].path;
-
-    // this.tituloPagina = this.nomeComponente;
   }
 
   ngOnInit() {
     this.obterTodos();
-    // this.configuracoesAgGrid();
-    // this.ajustarAgGrid();
   }
 
   async obterTodos() {
@@ -65,16 +61,6 @@ export abstract class BaseListComponent<T extends ModelBase> implements OnInit {
     )
   }
 
-//   inicializarDataTable(params) {
-//     this.gridApi = params.api
-//     this.gridApi.sizeColumnsToFit();
-//   }
-
-//   ajustarAgGrid() {
-//     this.menuService.emitirMenuAlterado.subscribe(
-//       (menuAlterado: any) => this.gridApi.sizeColumnsToFit()
-//     );
-//   }
 
   async submitFormulario() {
     switch (this.acaoAtual) {
@@ -83,29 +69,7 @@ export abstract class BaseListComponent<T extends ModelBase> implements OnInit {
     }
   }
 
-
-//   protected configuracoesAgGrid() {
-//     this.context = {
-//       componentParent: this
-//     };
-
-//     this.definicaoPadraoColunas = {
-//       sortable: true,
-//       resizable: true,
-//       filter: true
-//     };
-
-//     this.traducaoDataGrid = AgGridHelper.traduzirPTBR()
-
-//     this.frameworkComponents = {
-//       childMessageRenderer: BotoesComponent,
-//     };
-
-//     this.components = {}
-//   }
-
   protected async salvar() {
-    console.log('salvar');
     console.log(this.formulario.value)
     this.carregando = true;
     const formulario: T = this.jsonDadosToResourceFn(this.formulario.value);
@@ -122,7 +86,6 @@ export abstract class BaseListComponent<T extends ModelBase> implements OnInit {
   }
 
   protected async atualizar() {
-    console.log('atualizar');
     console.log(this.formulario.value)
     this.carregando = true;
     const formulario: T = this.jsonDadosToResourceFn(this.formulario.value);

@@ -68,35 +68,17 @@
                                     title="Remover foto" class="text-danger" (click)="removerImagem()"><i
                                         class='fa fa-times'></i>
                                     Remover Foto</span>
-                            </small>    
+                            </small>
                             <label id="labelUpload" for="imageUpload">
                                 <div id="boxFoto">
-                                    <img *ngIf="!formulario.value.imagem" src="../../../../../assets/images/sem-foto.jpg" alt="">
+                                    <img *ngIf="!formulario.value.imagem"
+                                        src="../../../../../assets/images/sem-foto.jpg" alt="">
                                     <img *ngIf="formulario.value.imagem" src="{{formulario.value.imagem}}" alt="">
                                     <input (change)="carregarImagem($event.target.files)" type="file" name="imageUpload"
                                         class="imageUpload" id="imageUpload">
                                 </div>
                             </label>
                         </div>
-                        <!-- <div class="col-md-4">
-                            <div [formGroup]="formulario">
-                                <img *ngIf="!formulario.value.imagem" src="../../../../../assets/images/sem-foto.jpg"
-                                    class="imagemBanner rounded mx-auto d-block">
-                                <img *ngIf="formulario.value.imagem" src="{{formulario.value.imagem}}"
-                                    class="imagemBanner rounded mx-auto d-block">
-                            </div>
-                            <div class="modal-footer-cust">
-                                <button class="btn btn-sm btn-danger" (click)="removerImagem()"
-                                    *ngIf="formulario.value.imagem"><i class="fa fa-times"></i>
-                                    Remover</button>
-                                <button class="btn btn-sm btn-primary adicionar-foto" (click)="carregarImagem()"
-                                    *ngIf="!formulario.value.imagem"><i class="fa fa-picture-o"></i>
-                                    Adicionar</button>
-                                <button class="btn btn-sm btn-primary pull-right" (click)="carregarImagem()"
-                                    *ngIf="formulario.value.imagem"><i class="fa fa-refresh"></i>
-                                    Trocar</button>
-                            </div>
-                        </div> -->
 
                         <div class="col-md-8">
                             <div class="col-md-12 mb-3">
@@ -107,12 +89,12 @@
                                     </div>
                                     <input formControlName="nome" type="text" class="form-control"
                                         id="inlineFormInputGroup">
-                                    <!-- <div class="text-danger"
-                                        *ngIf="formulario.get('nome').invalid && formulario.get('nome').touched">
-                                        <div *ngIf="formulario.get('nome').errors.required">
-                                            Campo obrigatório
-                                        </div>
-                                    </div> -->
+                                </div>
+                                <div class="text-danger"
+                                    *ngIf="formulario.get('nome').invalid && formulario.get('nome').touched">
+                                    <div *ngIf="formulario.get('nome').errors.required">
+                                        Campo obrigatório
+                                    </div>
                                 </div>
                             </div>
 
@@ -124,12 +106,12 @@
                                     </div>
                                     <input formControlName="valor" type="number" class="form-control"
                                         id="inlineFormInputGroup">
-                                    <!-- <div class="text-danger"
-                                        *ngIf="formulario.get('valor').invalid && formulario.get('valor').touched">
-                                        <div *ngIf="formulario.get('valor').errors.required">
-                                            Campo obrigatório
-                                        </div>
-                                    </div> -->
+                                </div>
+                                <div class="text-danger"
+                                    *ngIf="formulario.get('valor').invalid && formulario.get('valor').touched">
+                                    <div *ngIf="formulario.get('valor').errors.required">
+                                        Campo obrigatório
+                                    </div>
                                 </div>
                             </div>
                         </div>

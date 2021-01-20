@@ -1,37 +1,3 @@
-// .btn-danger {
-//     background-color: #aa0e16;
-//     border: none;
-// }
-
-// .imgCard {
-//     margin: 0;
-// }
-
-// .imagemBanner {
-//     border: 1px solid #077bff;
-//     max-width: 220px !important;
-//     min-width: 220px !important;
-//     max-height: 220px !important;
-//     min-height: 220px !important;
-// }
-
-// .modal-footer-cust {
-//     margin-top: 10px;
-//     border-top: 1px solid #ccc;
-//     padding-top: 10px;
-// }
-
-// @media (max-width: 400px) {
-//     .adicionar-foto {
-//         margin-left: 80px;
-//         margin-bottom: 20px;
-//     }
-
-//     h5 {
-//         text-align: center;
-//     }
-// }
-
 div.form-row-image {
     float: left;
     margin-right: 10px;
@@ -84,6 +50,11 @@ div.form-row-image {
 .reply-comment .media img {
     width: 70px;
     border-radius: 50%;
+}
+
+.text-danger{
+    font-size: 12px;
+    margin: 0 !important;
 }
 
 

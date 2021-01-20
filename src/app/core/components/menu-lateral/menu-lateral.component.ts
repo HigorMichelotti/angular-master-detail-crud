@@ -15,31 +15,18 @@ export class MenuLateralComponent implements OnInit {
   quantidadeNotificacaoNaoLida: number;
 
   constructor(
-    // private menuLateralService: MenuLateralService,
     private authService: AuthService,
-    // private controleNotificacaoService: ControleNotificacaoService
   ) { }
 
   ngOnInit() {
-    this.CodigoScript();
+    this.codigoScript();
   }
 
-  // DispararEventoMenuAlterado() {
-  //   this.menuLateralService.emitirMenuAlterado.emit();
-  // }
-
-  Sair() {
+  sair() {
     this.authService.logout();
-    // this.authService.mostrarMenu.emit(false);
   }
 
-  // DadosUsuario() {
-  //   this.email = this.authService.ObterTokenDecodeUsuario().email;
-  //   this.nomeOrigemUsuario = this.authService.ObterTokenDecodeUsuario().nomeOrigemUsuario;
-  // }
-
-
-  CodigoScript() {
+  codigoScript() {
     $('#collapse-icon').addClass('fa-angle-double-left');
 
     $('[data-toggle=sidebar-colapse]').click(function () {

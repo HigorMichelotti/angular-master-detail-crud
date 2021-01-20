@@ -38,9 +38,9 @@ export class AuthService {
     )
   }
 
-  async logout() {
+  logout() {
     localStorage.clear();
-    this.rota.navigate(["/"]);
+    this.rota.navigate(["login"]);
     this.mostrarMenu.emit(false);
   }
 
@@ -49,27 +49,6 @@ export class AuthService {
     else return false;
   }
 
-
-  //   verificarUsuario(dados: Usuario): Observable<any> {
-  //     return this.http.post(`${environment.BASE_URL}${this.caminhoApi}verificar-usuario`, dados).pipe(
-  //       map((data: any) => data),
-  //       catchError(this.handleError)
-  //     )
-  //   }
-
-  //   alterarSenha(dados: AlterarSenha): Observable<AlterarSenha> {
-  //     return this.http.post<any>(`${environment.BASE_URL}${this.caminhoApi}alterar-senha`, dados)
-  //       .pipe(
-  //         map((data: any) => {
-  //           return data;
-  //         }),
-  //         catchError(this.handleError)
-  //       )
-  //   }
-
-  //   async resetarSenha(dados: AlterarSenha) {
-  //     return this.http.post<any>(`${environment.BASE_URL}${this.caminhoApi}resetar-senha`, dados).toPromise()
-  //   }
 
   obterDadosUsuario(): UsuariosLogado {
     let usuarioLogado: UsuariosLogado;

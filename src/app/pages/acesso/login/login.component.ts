@@ -28,8 +28,6 @@ export class LoginComponent implements OnInit {
   public fazerLogin() {
     this.carregando = true;
     console.log(this.formulario.value);
-    // var usuario = new UsuariosLogado(true)
-    // this.acaoQuandoForSucesso(usuario);
     this.authService.fazerLogin(this.formulario.value).subscribe(
       data => this.acaoQuandoForSucesso(data),
       error => {
@@ -41,8 +39,8 @@ export class LoginComponent implements OnInit {
 
   protected setarAtributosFormulario() {
     this.formulario = this.formBuilder.group({
-      username: ['11234567890', [Validators.required]],
-      password: ['09876543211', [Validators.required]],
+      username: [null, [Validators.required]],
+      password: [null, [Validators.required]],
     })
   }
 
