@@ -60,7 +60,25 @@
                 </div>
                 <div class="modal-body" [formGroup]="formulario">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="form-row-image ml-4">
+                            <small style="display: block; margin: 0 !important; padding: 0px !important;">
+                                <span *ngIf="!formulario.value.imagem">Foto: 815x400 - Max: 100Kb</span>
+                                <span style="text-align: left; min-width: 125px !important;
+                                                  display: block !important;" *ngIf="formulario.value.imagem"
+                                    title="Remover foto" class="text-danger" (click)="removerImagem()"><i
+                                        class='fa fa-times'></i>
+                                    Remover Foto</span>
+                            </small>    
+                            <label id="labelUpload" for="imageUpload">
+                                <div id="boxFoto">
+                                    <img *ngIf="!formulario.value.imagem" src="../../../../../assets/images/sem-foto.jpg" alt="">
+                                    <img *ngIf="formulario.value.imagem" src="{{formulario.value.imagem}}" alt="">
+                                    <input (change)="carregarImagem($event.target.files)" type="file" name="imageUpload"
+                                        class="imageUpload" id="imageUpload">
+                                </div>
+                            </label>
+                        </div>
+                        <!-- <div class="col-md-4">
                             <div [formGroup]="formulario">
                                 <img *ngIf="!formulario.value.imagem" src="../../../../../assets/images/sem-foto.jpg"
                                     class="imagemBanner rounded mx-auto d-block">
@@ -78,7 +96,8 @@
                                     *ngIf="formulario.value.imagem"><i class="fa fa-refresh"></i>
                                     Trocar</button>
                             </div>
-                        </div>
+                        </div> -->
+
                         <div class="col-md-8">
                             <div class="col-md-12 mb-3">
                                 <label for="inlineFormInputGroup">Nome</label>

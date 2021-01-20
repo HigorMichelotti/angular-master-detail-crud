@@ -13,7 +13,7 @@ export class UploadArquivoService {
   async salvarArquivo(arquivo: File) {
     let formData = new FormData();
     formData.append("Arquivo", arquivo);
-    return await this.http.post<any>(`${environment.BASE_URL}/api/upload-arquivos/`, formData).toPromise()
+    return await this.http.post<any>(`${environment.BASE_URL}upload-arquivos/`, formData).toPromise()
     .then(data => {
       if (!data) return EmitirAlerta.alertaToastError("Algo deu errado, tente novamente");
     }, error => {
@@ -25,7 +25,7 @@ export class UploadArquivoService {
     let formData = new FormData();
     formData.append("Arquivo", arquivo);
     formData.append("CaminhoImagem", caminhoAntigo);
-    return await this.http.put<any>(`${environment.BASE_URL}/api/upload-arquivos`, formData).toPromise()
+    return await this.http.put<any>(`${environment.BASE_URL}upload-arquivos`, formData).toPromise()
     .then(data => {
       if (!data) return EmitirAlerta.alertaToastError("Algo deu errado, tente novamente");
     }, error => {
@@ -34,7 +34,7 @@ export class UploadArquivoService {
   }
 
   async excluirArquivo(caminhoAntigo: string) {
-    return await this.http.delete<any>(`${environment.BASE_URL}/api/upload-arquivos?caminhoImagem=${caminhoAntigo}`).toPromise()
+    return await this.http.delete<any>(`${environment.BASE_URL}upload-arquivos?caminhoImagem=${caminhoAntigo}`).toPromise()
     .then(data => {
       if (!data) return EmitirAlerta.alertaToastError("Algo deu errado, tente novamente");
     }, error => {

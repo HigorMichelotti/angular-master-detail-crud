@@ -1,38 +1,89 @@
-.btn-danger {
-    background-color: #aa0e16;
-    border: none;
-}
+// .btn-danger {
+//     background-color: #aa0e16;
+//     border: none;
+// }
 
-.imgCard {
-    margin: 0;
-}
+// .imgCard {
+//     margin: 0;
+// }
 
-.imagemBanner {
-    border: 1px solid #077bff;
-    max-width: 220px !important;
-    min-width: 220px !important;
-    max-height: 220px !important;
-    min-height: 220px !important;
-}
+// .imagemBanner {
+//     border: 1px solid #077bff;
+//     max-width: 220px !important;
+//     min-width: 220px !important;
+//     max-height: 220px !important;
+//     min-height: 220px !important;
+// }
 
-.modal-footer-cust {
-    margin-top: 10px;
-    border-top: 1px solid #ccc;
-    padding-top: 10px;
-}
+// .modal-footer-cust {
+//     margin-top: 10px;
+//     border-top: 1px solid #ccc;
+//     padding-top: 10px;
+// }
 
-@media (max-width: 400px) {
-    .adicionar-foto {
-        margin-left: 80px;
-        margin-bottom: 20px;
+// @media (max-width: 400px) {
+//     .adicionar-foto {
+//         margin-left: 80px;
+//         margin-bottom: 20px;
+//     }
+
+//     h5 {
+//         text-align: center;
+//     }
+// }
+
+div.form-row-image {
+    float: left;
+    margin-right: 10px;
+    text-align: center !important;
+    vertical-align: middle !important;
+    transition: all ease 1s;
+
+    small {
+        span {
+            cursor: pointer;
+        }
     }
 
-    h5 {
-        text-align: center;
+    div#boxFoto {
+        display: inline-block;
+        position: relative;
+        margin-top: 7px;
+        img {
+            width: 200px !important; //815
+            height: 120px !important; //400
+            padding: 4px;
+            border: 1.5px dashed rgba(172, 172, 172, 0.658);
+            border-radius: 15px;
+            min-width: 120px !important;
+            min-height: 120px !important;
+            object-fit: cover;
+        }
     }
 }
 
-.thAcoes{
-    max-width: 20px;
-    min-width: 20px;
+#labelUpload:hover img {
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity ease-in-out 0.2s;
 }
+
+.imageUpload {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    div.form-row-image {
+        float: none;
+        transition: all ease 1s;
+        text-align: center !important;
+        display: block !important;
+    }
+}
+
+.reply-comment .media img {
+    width: 70px;
+    border-radius: 50%;
+}
+
+

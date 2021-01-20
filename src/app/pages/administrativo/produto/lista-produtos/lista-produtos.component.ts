@@ -4,6 +4,7 @@ import { BaseListComponent } from 'src/app/shared/components/base-components/bas
 import { ArquivoUtils } from 'src/app/shared/helpers/arquivo-utils';
 import { EmitirAlerta } from 'src/app/shared/helpers/sweer-alertas';
 import { UploadArquivoService } from 'src/app/shared/services/upload-arquivo.service';
+import { environment } from 'src/environments/environment';
 import Swal from 'sweetalert2';
 import { Produto } from '../shared/models/produto.model';
 import { ProdutoService } from '../shared/services/produto.service';
@@ -33,8 +34,14 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
   }
 
   atribuirParaEditar(produto: Produto) {
+    this.excluiuArquivo = false;
+
     this.imagemAntigo = produto.imagem;
     super.atribuirParaEditar(produto);
+
+    if (this.formulario.value.imagem != null) {
+      this.formulario.patchValue({ imagem: environment.CAMINHO_IMAGEM + this.formulario.value.imagem })
+    }
   }
 
   protected setarAtributosFormulario(): void {
@@ -46,35 +53,16 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
     })
   }
 
-  async carregarImagem() {
-    const { value: file } = await Swal.fire({
-      title: 'Selecione uma imagem',
-      input: 'file',
-      inputAttributes: {
-        accept: 'image/*',
-        'aria-label': 'Selecione uma imagem'
-      }
-    })
-    if (file) {
-      if (!await ArquivoUtils.verificaTamanhoImagemKB(file, 100)) return;
-      const reader = new FileReader()
-      reader.onload = (e: any) => {
-        Swal.fire({
-          title: 'Deseja salvar esta imagem',
-          imageUrl: e.target.result,
-          imageWidth: 300,
-          imageHeight: 300,
-          imageAlt: 'The uploaded picture',
-          showCancelButton: true,
-        }).then((result) => {
-          if (result.value) {
-            this.formulario.patchValue({ imagem: e.target.result })
-          }
-        })
-      }
-      reader.readAsDataURL(file);
-      this.arquivoSelecionado = file
+  async carregarImagem(files: any) {
+    const file: File = files[0];
+    const reader: FileReader = new FileReader();
+    if (!file) return;
+    reader.onload = async (e: any) => {
+      if (!await ArquivoUtils.verificaTamanhoImagemKB(file, 200)) return;
+      this.formulario.get("imagem").setValue(e.target.result);
+      this.arquivoSelecionado = file;
     }
+    reader.readAsDataURL(file);
   }
 
 
@@ -92,8 +80,8 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
       .then(data => {
         if (!data) return EmitirAlerta.alertaToastError("Algo deu errado, tente novamente");
 
-        // if (this.arquivoSelecionado != null && this.arquivoSelecionado != undefined)
-        //   this.uploadArquivoService.salvarArquivo(this.arquivoSelecionado);
+        if (this.arquivoSelecionado != null && this.arquivoSelecionado != undefined)
+          this.uploadArquivoService.salvarArquivo(this.arquivoSelecionado);
         super.obterTodos();
         super.acaoQuandoForSuccesso();
         this.carregando = false;
@@ -101,6 +89,7 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
       }, error => {
         super.acaoQuandoForError();
         this.carregando = false;
+        super.fecharModal(this.modalCadastroEdicao);
       });
   }
 
@@ -124,8 +113,8 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
 
     this.produtoService.atualizar(produto)
       .then(data => {
-        // if (this.arquivoSelecionado != null && this.arquivoSelecionado != undefined)
-        //   this.uploadArquivoService.atualizarArquivo(this.imagemAntigo, this.arquivoSelecionado)
+        if (this.arquivoSelecionado != null && this.arquivoSelecionado != undefined)
+          this.uploadArquivoService.atualizarArquivo(this.imagemAntigo, this.arquivoSelecionado)
 
         super.obterTodos();
         super.acaoQuandoForSuccesso();
@@ -134,6 +123,7 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
       }, error => {
         super.acaoQuandoForError();
         this.carregando = false;
+        super.fecharModal(this.modalCadastroEdicao);
       });
   }
 
@@ -156,22 +146,9 @@ export class ListaProdutosComponent extends BaseListComponent<Produto> implement
   }
 
   removerImagem() {
-    Swal.fire({
-      title: 'Excluir',
-      text: "Realmente deseja excluir?!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Sim, deletar!',
-      cancelButtonText: 'Cancelar'
-    }).then((result) => {
-      if (result.value) {
-        this.arquivoSelecionado = null;
-        this.excluiuArquivo = true;
-        this.formulario.patchValue({ imagem: "" })
-      }
-    })
+    this.arquivoSelecionado = null;
+    this.excluiuArquivo = true;
+    this.formulario.patchValue({ imagem: "" })
   }
 
 
